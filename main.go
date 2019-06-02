@@ -11,6 +11,12 @@ import (
 	"time"
 )
 
+func main() {
+	net := CreateNet(784, 16, 10, 0.1)
+	mnistTrain(&net)
+	mnistPredict(&net)
+}
+
 func mnistTrain(net *Network) {
 	rand.Seed(time.Now().UTC().UnixNano())
 	start := time.Now()
@@ -85,11 +91,4 @@ func mnistPredict(net *Network) {
 	elapsed := time.Since(start)
 	fmt.Printf("Time taken to predict 10000 digits = %s\n", elapsed)
 	fmt.Println("score: ", score)
-}
-
-func main() {
-
-	net := CreateNet(784, 16, 10, 0.1)
-	mnistTrain(&net)
-	mnistPredict(&net)
 }
